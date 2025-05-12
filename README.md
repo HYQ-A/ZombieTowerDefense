@@ -37,3 +37,31 @@
     GameObject tower = Instantiate(Resources.Load(data.res), position);
     tower.GetComponent<TowerObj>().InitInfo(data);
   }
+  ```
+
+#### 🧟 丧尸AI
+- **三态行为**
+```csharp
+// EnemyController.cs
+enum EnemyStates { PATROL, CHASE, ATTACK }
+```
+- **动态寻路**
+```csharp
+agent.SetDestination(MainTowerObj.Instance.transform.position);
+```
+
+#### ⚙️ 数据驱动
+- **配置中心**
+```csharp
+// GameDataMgr.cs
+public List<TowerInfo> towerInfoList; 
+public List<MonsterInfo> monsterInfoList;
+```
+- **数据持久化**
+```csharp
+// SaveManager.cs
+PlayerPrefs.SetString(key, JsonUtility.ToJson(data));
+```
+
+
+
